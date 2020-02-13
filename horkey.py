@@ -1,11 +1,41 @@
-def jump(arr,K,y,x):
-    dx = [2,2,1,1,0,0]
-    dy = [1,-1,0,2,-1,1]
+import collections
+import sys
+sys.stdin = open("input.txt","r")
+
+def bfs(arr, start_node):
+    visit = []
+    queue = collections.deque()
+
+    queue.append(start_node)
+
+    while queue:
+        node = queue.popleft()
+        if node not in visit:
+            visit.append(node)
+            for ar in arr:
+                if ar[0] == node:
+                    queue.append(ar[1])
+    return visit
+
+def dfs(arr, start_node):
+    visit = []
+    stack = []
+    stack.append(start_node)
+
+
+    while stack:
+        print(stack)
+        node = stack.pop()
+        if node not in visit:
+            visit.append(node)
+            for ar in arr:
+                if ar[0] == node:
+                    stack.append(ar[1])
+    return visit
     
-    r = min(jump)
-    return()
 
 
-K = int(input())
-W, H = list(map(int,input().split()))
-arr = [list(map(int,input().split())) for i in range(H)]
+N, M, V = list(map(int,input().split()))
+arr = [list(map(int,input().split())) for i in range(M)]
+print(*dfs(arr,1))
+print(*bfs(arr,1))
