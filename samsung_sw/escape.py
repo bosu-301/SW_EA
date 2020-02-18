@@ -1,4 +1,7 @@
 import copy
+# import sys
+# sys.stdin = open("input.txt", "r")
+
 def move(o_arr,o_d,cnt,o_i):
     if cnt>=11:
         return 99
